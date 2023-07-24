@@ -33,11 +33,12 @@ async function getData() {
 export default async function Home() {
   const request = await getData();
   const data = JSON.parse(request);
-  console.log(data);
+
+  // console.log(data);
   return (
     <main>
-      <Test />
-      {request}
+      <Test text={request} />
+      {/* {request} */}
     </main>
   );
 }
