@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styles from "./vest.module.scss";
-import { data } from "autoprefixer";
 
 const Test = () => {
   const [data, setData] = useState("");
