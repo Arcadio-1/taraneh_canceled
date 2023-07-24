@@ -1,0 +1,9 @@
+@use "../../style/clips.scss" as *;
+.test {
+  background-color: red;
+  &_nested {
+    background-color: green;
+    @include dflex;
+    color: color(g3-2);
+  }
+}

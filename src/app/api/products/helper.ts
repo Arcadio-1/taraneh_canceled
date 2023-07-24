@@ -1,7 +1,6 @@
-import Test from "./_components/Test";
-import { getClient } from "./api/util/getClient";
+import { getClient } from "../util/getClient";
 
-async function getData() {
+export const getAdProducts = async () => {
   try {
     const client = await getClient("products");
     if (!client) {
@@ -28,16 +27,4 @@ async function getData() {
       adProducts: null,
     });
   }
-}
-
-export default async function Home() {
-  const request = await getData();
-  const data = JSON.parse(request);
-  console.log(data);
-  return (
-    <main>
-      <Test />
-      {request}
-    </main>
-  );
-}
+};
