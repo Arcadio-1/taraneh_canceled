@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { HYDRATE } from "next-redux-wrapper";
 
 export const cartApi = createApi({
@@ -16,4 +16,4 @@ export const cartApi = createApi({
   }),
 });
 
-export const { useGetProductsQuery } = cartApi;
+// export const { useGetProductsQuery } = cartApi;

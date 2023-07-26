@@ -6,7 +6,7 @@ import { getClient } from "./api/util/getClient";
 import { cartApi } from "@/lib/features/services/apiSlice";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useGetProductsQuery } from "@/lib/hooks/hook";
+// import { useGetProductsQuery } from "@/lib/hooks/hook";
 import { setData } from "@/lib/features/data/dataSlice";
 import Test2 from "./_components/Test2";
 
