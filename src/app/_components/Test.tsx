@@ -2,17 +2,25 @@
 import React, { useEffect, useState } from "react";
 import styles from "./vest.module.scss";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/lib/store";
 import { darkOn } from "@/lib/features/ui/uiSlice";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useGetProductsQuery,
+} from "@/lib/hooks/hook";
 interface Props {
   text: string;
 }
+
 const Test = (props: Props) => {
-  const [data, setData] = useState<any>();
-  const dispatchTheme = useDispatch<AppDispatch>();
-  const isDark = useSelector<RootState>((state) => state.ui.isDark);
+  const [dataa, setData] = useState<any>();
+  const dispatchTheme = useAppDispatch();
+  const { isDark } = useAppSelector((state) => state.ui);
+
+  const { isError, isFetching, isLoading, data } = useGetProductsQuery(
+    undefined,
+    { pollingInterval: 500000 }
+  );
 
   // useEffect(() => {
   //   dispatchTheme(darkOn);
@@ -46,9 +54,9 @@ const Test = (props: Props) => {
     // getAdProductsAxios();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   return (
     <div className={styles.test}>
       <span onClick={themeToggle}>Test</span>

@@ -8,7 +8,7 @@ export async function GET() {
 
     // const data = response.adProducts;
     // const data2 = data.json();
-    console.log(request);
+    // console.log(request);
     // if (!response || response.status === "error") {
     //   throw new Error(
     //     response.message || "خطا در دریافت لیست محصولات تبلیغاتی رخ داده است"
