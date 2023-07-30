@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 // import { useGetProductsQuery } from "@/lib/hooks/hook";
 import { setData } from "@/lib/features/data/dataSlice";
 import Test2 from "./_components/Test2";
+import Test3 from "./_components/Test3";
 
 async function getData() {
   // store.dispatch(cartApi.endpoints.getProducts.initiate(undefined));
@@ -27,7 +28,7 @@ async function getData() {
       throw new Error("خطا در دریافت لیست محصولات تبلیغاتی");
     }
     // console.log(request);
-    store.dispatch(setData(request));
+    // store.dispatch(setData(request));
 
     return JSON.stringify({
       status: "success",
@@ -50,15 +51,16 @@ export default async function Home() {
   //   undefined,
   //   { pollingInterval: 500000 }
   // );
-  const data = store.getState().data.products;
   // console.log(data);
   // useEffect(() => {
   //   console.log();
   // }, []);
   const request: any = await getData();
   // await getData();
-  // const data = JSON.parse(request);
-  console.log("request");
+  // const data = store.getState().data.products;
+  // const data2 =
+  const data = JSON.parse(request);
+  // console.log("request");
   // if (data && data.status === "success") {
   //   console.log
   // store.dispatch(setData(data.adProducts));
@@ -68,6 +70,7 @@ export default async function Home() {
       <h1>main page</h1>
       {/* <Test text={request} /> */}
       <Test2 data={data} />
+      <Test3 data={data} />
       {/* {request} */}
     </main>
   );

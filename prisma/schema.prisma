@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type AllProductsPackaging {
+  availableGrind   Int[]
+  availableToOrder Int
+  value            Int[]
+}
+
+type AllProductsPrice {
+  currency   String
+  offPersent Int
+  value      Int
+}
+
+type AllProductsStatistics {
+  buyerLiked    Int
+  dateAdded     String
+  dateAdded_new DateTime @default(now())
+  updateAt      DateTime @default(now())
+  like          Int
+  rate          Int
+  soled         Int
+  views         Int
+}
+
+type AllProductsTags {
+  id    Int
+  title String
+}
+
+type AllProductsTaste {
+  arabica  Int
+  bitter   Int
+  caffeine Int
+  perfume  Int
+  pickle   Int
+  robusta  Int
+}
+
+type Comments2Comments {
+  date     String
+  date_new DateTime                 @default(now())
+  dislike  Int
+  fullname String
+  id       Int
+  like     Int
+  parent   Comments2CommentsParent?
+  rate     Int
+  text     String
+  userId   String
+}
+
+type Comments2CommentsParent {
+  fullName String
+  id       Int
+}
+
+model Product {
+  id               String                @id @default(auto()) @map("_id") @db.ObjectId
+  ageGroup         String
+  brandEn          String
+  brandFn          String
+  category         String
+  categoryAddress  String
+  coffeeType       String
+  description      String
+  id_              String                @map("id")
+  imageLink        String
+  imgList          String[]
+  isAd             Boolean
+  packaging        AllProductsPackaging
+  packingCountry   String
+  price            AllProductsPrice
+  producingCountry String
+  sell             String
+  statistics       AllProductsStatistics
+  status           Boolean
+  tags             AllProductsTags[]
+  taste            AllProductsTaste
+  title            String
+
+  @@map("allProducts")
+}
+
+model comments_2 {
+  id       String              @id @map("_id")
+  comments Comments2Comments[]
+}
+
+model testing {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  family    String
+  age       Int
+  dataAdedd DateTime @default(now())
+}
